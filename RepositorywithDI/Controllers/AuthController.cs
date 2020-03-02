@@ -19,7 +19,7 @@ namespace RepositorywithDI.Controllers
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         #region Properties
@@ -50,11 +50,11 @@ namespace RepositorywithDI.Controllers
             {
                 var user = await _authService.Authenticate(model.Username, model.Password);
 
-                if (user == null)
+                if (user == null || user.Employee == null)
                 {
                     return new AuthenticationResponse()
                     {
-                        Token = user,
+                        Token = new TokenResponse(),
                         Message = "Username or password is incorrect",
                         IsError = true
                     };

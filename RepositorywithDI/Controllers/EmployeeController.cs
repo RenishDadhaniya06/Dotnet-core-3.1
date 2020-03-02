@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RepositorywithDI.Extension;
 using RepositorywithDI.Models;
 using RepositorywithDI.Models.ViewModel;
 using RepositorywithDI.Services.Interfaces;
@@ -107,6 +108,7 @@ namespace RepositorywithDI.Controllers
         {
             try
             {
+             
                 var employee = await _service.Insert(model);
                 if (employee == null)
                 {

@@ -91,12 +91,11 @@ namespace RepositorywithDI.Services.Classes
         {
             try
             {
-
                 model.Password = ExtensionMethods.Encrypt(model.Password);
                 model.IsDelete = false;
+                model.IsSuperAdmin = false;
                 var employee = await _repository.Post(model);
                 return employee.WithoutPassword();
-
             }
             catch (Exception)
             {

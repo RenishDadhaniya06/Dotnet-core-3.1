@@ -90,7 +90,7 @@ namespace RepositorywithDI.Repository.Classes
                 var data = await entity.FirstOrDefaultAsync(predicate);
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
