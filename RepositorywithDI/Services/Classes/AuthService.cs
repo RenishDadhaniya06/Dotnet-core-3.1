@@ -66,7 +66,7 @@
                
                 Token = token,
                 Employee = user,
-                ExpireIn = "1000",
+                ExpireIn = "864000",
                 RefreshToken = refreshToken
             };
         }
@@ -86,7 +86,7 @@
             var token = new JwtSecurityToken(
                 issuer: "http://oec.com",
                 audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddSeconds(1),
+                expires: DateTime.UtcNow.AddHours(24),
                 claims: claims,
                 signingCredentials: new Microsoft.IdentityModel.Tokens.SigningCredentials(signinkey, SecurityAlgorithms.HmacSha256)
                 );
