@@ -39,7 +39,7 @@ namespace RepositorywithDI.Services.Classes
             try
             {
                 var employee = await _repository.FindBy(_=>_.IsDelete == false);
-                return employee.AsEnumerable().WithoutPasswords().Take(take).Skip(skip).ToList();
+                return employee.AsEnumerable().WithoutPasswords().Skip(skip).Take(take).ToList();
             }
             catch (Exception)
             {
@@ -64,6 +64,18 @@ namespace RepositorywithDI.Services.Classes
             }
         }
 
+        public async Task<int> GetCount()
+        {
+            try
+            {
+                var employee = await _repository.FindBy(_ => _.IsDelete == false);
+                return employee.ToList().Count;
+            }
+            catch (Exception)
+            {
+               return 0;
+            }
+        }
         /// <summary>
         /// Gets the employee.
         /// </summary>

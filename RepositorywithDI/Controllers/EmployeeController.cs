@@ -43,14 +43,16 @@ namespace RepositorywithDI.Controllers
         {
             try
             {
-                var data = await _service.Get(Convert.ToInt32(take), Convert.ToInt32(skip));
-                return new ListReponse<Employee>()
-                {
-                    Data = data,
-                    Count = data.Count,
-                    IsError = false,
-                    Message = string.Empty,
-                };
+                    var data = await _service.Get(Convert.ToInt32(take), Convert.ToInt32(skip));
+                var count = await _service.GetCount();
+                    return new ListReponse<Employee>()
+                    {
+                        Data = data,
+                        Count = count,
+                        IsError = false,
+                        Message = string.Empty,
+                    };
+               
             }
             catch (Exception ex)
             {
@@ -64,6 +66,33 @@ namespace RepositorywithDI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<ListReponse<Employee>> GetAll()
+        {
+            try { 
+            
+                    var data = await _service.Get();
+                    return new ListReponse<Employee>()
+                    {
+                        Data = data,
+                        Count = data.Count,
+                        IsError = false,
+                        Message = string.Empty,
+                    };
+
+            }
+            catch (Exception ex)
+            {
+                return new ListReponse<Employee>()
+                {
+                    Data = new List<Employee>(),
+                    Count = 0,
+                    IsError = true,
+                    Message = ex.Message,
+                };
+            }
+        }
 
         /// <summary>
         /// Gets the specified identifier.

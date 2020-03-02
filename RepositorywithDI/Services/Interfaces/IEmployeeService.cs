@@ -13,6 +13,7 @@ namespace RepositorywithDI.Services.Interfaces
         Task<List<Employee>> Get();
 
         Task<Employee> Get(Guid id);
+        Task<int> GetCount();
 
         Task<Employee> Insert(Employee model);
 

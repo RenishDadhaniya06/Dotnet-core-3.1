@@ -44,7 +44,7 @@ namespace RepositorywithDI.Services
             try
             {
                 var employee = await _userrepository.GetAll();
-                return employee.Take(take).Skip(skip).ToList();
+                return employee.Skip(skip).Take(take).ToList();
             }
             catch (Exception)
             {
