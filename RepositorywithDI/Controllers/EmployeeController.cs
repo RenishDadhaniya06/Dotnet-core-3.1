@@ -236,7 +236,7 @@ namespace RepositorywithDI.Controllers
                     return new SingleReponse<Employee>()
                     {
                         IsError = false,
-                        Message = "Employee Deleted Sucessfully.",
+                        Message = "Users Deleted Sucessfully.",
                         Data = employee
                     };
                 }
